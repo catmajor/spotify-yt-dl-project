@@ -1,0 +1,22 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Closing Window...</h1>
+    <script>
+      const url = new URL(window.location)
+      const token = url.searchParams.get("token")
+      const refresh = url.searchParams.get("refresh")
+      localStorage.setItem("refresh", refresh)
+      localStorage.setItem("token", token)
+      if (!opener) {
+        window.location = "./ui"
+      }
+      opener.token = token
+      opener.refresh = refresh
+      if (opener.token&&opener.refresh) {
+        opener.dispatchEvent(new CustomEvent("tokensAquired"))
+        window.close()
+      }
+    </script>
+  </body>
+</html>

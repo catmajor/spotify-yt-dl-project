@@ -1,0 +1,35 @@
+UI
+#Add Liked Songs Playlist
+#
+#Dynamic Display
+##Lyrics
+##Clientside song editing
+###Remove db pages and migrate all functions into ui.
+###Add custom cutoff ranges based on local storage or cookies?
+###Notification system for requesting change of video link to yt
+###Ability to reset/detection of faulty downloads
+#
+#Rework Options
+##Cellular Data Detection
+##Low-Data Mode
+##Add small album pictures when not in cellular mode
+#
+#Rework Playlistbar on Mobile
+#
+#CLEANUP CLASS CONSTRUCTORS --- package some stuff in some objects maybe?
+
+Backend
+#Potential google login system to allow more than just 25 people to login at once?
+#Caching system with usage based song priority
+/#Song statistics storage -- DONE I AM SO DONE WHY IS THERE NO CLEAR EXPLANATION ANYWHERE ON RMS
+/#Song volume, start cut, end cut - DID THE VOLUME AFTER LIKE SO MANY HOURS MAYBE WILL DO REST LATER - probably move start cut and end cut to allow user to decide
+/#Create proper logging and commands to access ----------- DONE AEAEFEFWEFWEFWEFWEF (only took like 3 hours of my life)
+
+SSH
+#Create ssh page to allow exectution of commands without having replit open
+
+Sidequests:
+#Neatness - also a pretty funny little thing
+#Add proper comments to everything - haha nice joke
+/#Add home page - DONE
+

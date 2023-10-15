@@ -1,0 +1,150 @@
+body {width: 100%; height: 100%; color: black; display: flex; padding: 0; margin: 0;}
+body .cannot_access {width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 40px}
+main {user-select: none}
+:root {
+  --sidebarwidth: 150px;
+}
+#staticbackground {z-index: -99; height: 200px; width: 100%; background: linear-gradient(to bottom, #183f26, #111 75%); height: fit-content; background-repeat: no-repeat;}
+#show-playlists-mobile {display:none;}
+
+/*estiles para las computadoras*/
+@media only screen and (min-width: 1224px) {
+  .mobile {display:none}
+  /*Account Info*/
+  #accountinfo {height: 100vh; width: var(--sidebarwidth); position: fixed; left: 0px; top: 0px; margin: 0; color: white; font-size: 15px; font-family: 'Barlow'; padding-right: 40px;}
+  #accountinfo .selected {color: #2DC964}
+  #accountinfo ul {padding: 0; margin: 0; background-color: rgba(24, 24, 24, 0.6); padding: 10px; box-sizing: border-box; border-radius: 10px;}
+  #accountinfo .sidebarele1 {border-top: #555 solid 1px}
+  #accountinfo .sidebarele2 {border-bottom: #555 solid 1px; margin-top: 20px; height: fit-content}
+  #accountinfo ul li {list-style-type: none; height: auto; position: relative; z-index: 0; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-color: #222; border-radius: 5px; padding-top: 5px; padding-bottom: 5px;}
+  #accountinfo ul li:not(:last-of-type) {margin-bottom: 15px}
+  #accountinfo ul li:not(.hoverable) {cursor: default}
+  #accountinfo ul li.hoverable {cursor: pointer; transition: 0.1s ease-in-out}
+  #accountinfo ul li.hoverable:active, #accountinfo ul li.hoverable:focus {background-color: #111;}
+  #accountinfo ul li.hoverable:hover {background-color: #282828;}
+  #accountinfo .flip {height: 100vh}
+  #accountinfo>.flip {overflow-y: auto; padding-top: 20px; direction: rtl; padding-left: 5px}
+  #accountinfo .flip .flip { direction: ltr}
+  #accountinfo ::-webkit-scrollbar {width: 5px}
+  
+  /*Song List When Playlist Clicked*/
+  main {width: calc(100% - var(--sidebarwidth) - 50px); display: flex; margin-left: calc(var(--sidebarwidth) + 50px)}
+  #songlist .selected {color: #2DC964; border-color: #1DB954;}
+  main>* {height: auto; }
+  #songlist {width: calc((100%)/2); display: flex; flex-direction: column; align-items: center; padding: 30px 0px 30px 0; box-sizing: border-box; font-family: "Barlow"; }
+  #songlist div {display: flex; background-color: rgba(24, 24, 24, 0.6); width: 100%; padding: 10px; box-sizing: border-box; border-radius: 20px; color: white; align-items: center; cursor: pointer; transition: 0.1s ease-in-out; border-right: #555 solid 2px; border-left: #555 solid 2px}
+  #songlist div:not(:last-of-type) {margin-bottom: 40px}
+  #songlist div p:first-of-type {background-color: #222; height: 80%; border-radius: 10px; align-items: center; padding-left: 10px; padding-right: 10px; display: flex}
+  #songlist div p:last-of-type {background-color: #222; height: 80%; width: 10%; border-radius: 10px; display: flex; align-items: center; justify-content: center}
+  #songlist p:nth-of-type(2) {flex-grow: 1}
+  #songlist div:hover {background-color: #282828}
+  ::-webkit-scrollbar {width: 10px}
+  ::-webkit-scrollbar-track {background-color: #222; border-left: #444 solid 4px}
+  ::-webkit-scrollbar-thumb {background: #1DB954; border-radius: 5px}
+  ::-webkit-scrollbar-thumb:hover {background: #2DC964;}
+  
+  /*Current Song Things*/       
+  #currentsong {box-sizing: border-box; padding: 40px; position: fixed; width: calc((100% - 200px)/2); right: 0; height: 100%;}
+  #currentsong>div {width: 100%; height: 100%; background-color: rgba(24, 24, 24, 0.6); border-bottom: #555 solid 4px; border-top: #555 solid 4px; border-radius: 15px; display: flex; align-items: center; flex-direction: column; justify-content: center;}
+  #controls {width: 80%; height: 100%; display: flex; flex-direction: column; align-items: center}
+  #controls>div:first-of-type {display: flex; height: 70%; width: 100%}
+  #controls>div:last-of-type {display: flex; width: 100%; justify-content: space-around}
+  #controls>div>div {color: white; font-weight: 900; display: flex; align-items: center; justify-content: center;}
+  .switchwrapper {height: 30px; background-color: #222; border-radius: 10px; flex-grow: 1; margin-left: 10px; margin-right: 10px;}
+  .switchwrapper p {margin: 0; margin-left: 10px; font-weight: 400; }
+  .switch {width: 35px; height: 20px; background-color: #fc0a02; border-radius: 10px; position: relative; margin-left: 10px; margin-right: 10px; cursor: pointer; transition: 0.1s ease-in-out}
+  .switch span {background-color: white; width: 20px; height: 20px; border-radius: 10px; position: absolute; left: 0px; transition: 0.1s ease-in-out}
+  #currentsong img {width: 70%;  border-radius: 15px; margin-top: 15px}
+  #currentsong #wrapper #playerWrapper {height: 40%; width: 80%; box-sizing: border-box; padding: 10px; padding-bottom: 0}
+  #currentsong #wrapper #player {height: 100%; background-color: #222; border-radius: 10px; display: flex; width: 100%; color: white; font-family: 'Barlow'; transition: border-radius 1s;}
+  #currentsong #player #timer {flex-grow: 1; -webkit-appearance: none; appearance: none; background: #222; --progress: 0px;}
+  #currentsong #player #timer::-webkit-slider-runnable-track {background: #333; box-shadow: var(--progress) 0px #2DC964 inset, var(--load) 0px #324238 inset; border-radius: 10px}
+  #currentsong #player #timer::-moz-range-track {background: #333; box-shadow: var(--progress) 0px #2DC964 inset, var(--load) 0px #324238 inset; border-radius: 10px}
+  #currentsong #player #timer::-webkit-slider-thumb {-webkit-appearance: none; appearance: none; background: #2DC964; width: 5px; height: 5px; cursor: pointer; border-radius: 10px}
+  #currentsong #player #timer::-moz-range-thumb {background: #2DC964; width: 5px; height: 5px; cursor: pointer; border-radius: 10px}
+  #currentsong #player #playBtn {width: 30px; overflow: hidden;}
+  #currentsong #player #playBtn:active .material-icon, #currentsong #player #playBtn:focus .material-icon, #currentsong #player #playBtn:hover .material-icon {color: #2DC964}
+  #currentsong #player #playBtn i {font-size: 30px; color: white; cursor: pointer}
+  #currentsong #player div {font-size: 15px; display: flex; align-items: center; justify-content: flex-start;}
+  #currentsong #player div:not(#timer) {margin-right: 10px; margin-left: 10px}
+  #currentsong #playerWrapper #volumeWarning {background-color: rgba(78, 27, 27, 0.8); border: rgba(255, 0, 0, 0.5) solid 3px; border-top: none; color: white; font-family: 'Barlow'; box-sizing: border-box; padding: 5px; position: relative; transition: opacity 1s ease-in-out, border-radius 1s;}
+  #currentsong #playerWrapper #volumeWarning.enabled {opacity: 1; z-index: 99; border-radius: 0px 0px 10px 10px;}
+  #currentsong #playerWrapper #volumeWarning:not(.enabled) {opacity: 0; z-index: -99; transition: opacity 1s ease-in-out, z-index 0.1s 1s, border-radius 1s; border-radius: 10px;}
+  #currentsong audio {width: 80%; height: 30%;}
+  #wrapper {width: 100%; height: 40%; display: flex; align-items: center; flex-direction: column; justify-content: center; margin-top: 15px}
+  #songname {text-align: center; flex-grow: 1; font-family: 'Barlow'; font-weight: 400; user-select: text}
+  .arrow, #songname {background-color: #222; border-radius: 10px; height: auto; margin-top: 15px; margin-bottom: 15px; flex-grow: 1}
+  .arrow {margin-left: 10px; margin-right: 10px; width: 40px; transition: 0.1s ease-in-out; width: 20%; max-width: 10%; min-width: 10%; cursor: pointer}
+  #currentsong .arrow:hover {background-color: #2DC964; color: black}
+  #currentsong .arrow:active, #currentsong .arrow:focus {background-color: #1DB954; color: black}
+}
+/*telefono telefono no lo quiero ver*/
+@media only screen and (max-width : 1224px) {
+  #staticbackground {background: linear-gradient(to bottom, #183f26, #111 800px)}
+  main {width: 100%;}
+  #show-playlists-mobile:checked ~ #accountinfo .mobile {background-color: #333}
+  #show-playlists-mobile:not(:checked) ~ #accountinfo ul.sidebarele2 {opacity: 0; z-index: -99; display: none; top: -1000px}
+  #accountinfo {width: 100%; position: fixed; height: 300px; top: 0; left: 0; color: white; display: flex; flex-direction: column;}
+  #accountinfo .selected {color: #2DC964}
+  #accountinfo ul.sidebarele1 {border-top: #555 solid 4px; padding: 0; margin: 0; padding-right: 10px; padding-left: 10px; margin-left: 5px; background-color: rgba(24, 24, 24, 0.8); box-sizing: border-box; margin-top: 20px; border-radius: 30px; display: flex; justify-content: center; margin-left: 30px; margin-right: 30px; height: 135px;}
+  #accountinfo .sidebarele2-mobile {padding: 0; margin: 0; padding-right: 10px; padding-left: 10px; margin-left: 5px; background-color: rgba(24, 24, 24, 0.8); box-sizing: border-box; margin-top: 20px; border-radius: 30px; display: flex; margin-left: 30px; margin-right: 30px; position: relative; height: 135px; border-bottom: #555 solid 4px;}
+  #accountinfo ul.sidebarele2 {opacity: 1; transition: opacity 0.1s ease-in-out; position: absolute; z-index: 99; top: 140px; left: -10px; width: 100%; padding: 0; list-style-type: none; background-color: rgba(24, 24, 24, 0.8); border-top: #555 solid 4px; border-bottom: solid #555 4px; border-radius: 30px; padding: 10px; height: 700px; overflow-y: scroll}
+  #accountinfo ul.sidebarele2 li {}
+  #accountinfo ul.sidebarele2 li {z-index: 99}
+  #accountinfo label.mobile {transition: 0.1s ease-in-out; height: 100px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-color: #222; border-radius: 20px; padding-top: 5px; padding-bottom: 5px; margin: 10px; flex-grow: 1; font-size: 35px; font-family: 'Barlow'; width: 100%}
+  #accountinfo ul li {list-style-type: none; height: 100px; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-color: #222; border-radius: 20px; padding-top: 5px; padding-bottom: 5px; margin: 10px; flex-grow: 1; font-size: 35px; font-family: 'Barlow'; overflow-y:hidden}
+  #accountinfo ul li:not(:last-of-type) {margin-bottom: 15px}
+  #accountinfo ul li:not(.hoverable) {cursor: default}
+  #accountinfo ul li.hoverable {cursor: pointer; transition: 0.1s ease-in-out}
+  #accountinfo ul li.hoverable:active, #accountinfo ul li.hoverable:focus {background-color: #111;}
+  #accountinfo ul li.hoverable:hover {background-color: #282828;}
+  ::-webkit-scrollbar {width: 10px}
+  ::-webkit-scrollbar-track {background-color: #111}
+  ::-webkit-scrollbar-thumb {background: #1DB954; border-radius: 5px}
+  ::-webkit-scrollbar-thumb:hover {background: #2DC964;}
+
+  #show-playlists-mobile:checked ~ #currentsong {z-index: -1;}
+  #currentsong {position: fixed; top: 300px; box-sizing: border-box; padding: 40px; position: fixed; width: 100%; height: 500px; border-bottom: #444 solid 5px; z-index: 1}
+  #currentsong>div {width: 100%; height: 100%; background-color: #181818; border-bottom: #555 solid 4px; border-top: #555 solid 4px; border-radius: 15px; display: flex; align-items: center; justify-content: center;}
+  #currentsong img {width: 300px;  border-radius: 15px; margin-left: 30px; }
+  #songname {flex-grow: 1; font-family: 'Barlow'; font-weight: 400; text-align: center; user-select: text}
+  #wrapper {width: 100%; margin: 30px; height: 100%}
+  .arrow, #songname {background-color: #222; border-radius: 10px; height: auto; margin-top: 15px; margin-bottom: 15px; flex-grow: 1; font-size: 30px}
+  .arrow {margin-left: 10px; margin-right: 10px; width: 40px; transition: 0.1s ease-in-out; width: 20%; max-width: 10%; min-width: 10%; cursor: pointer}
+  #currentsong .arrow:hover {background-color: #2DC964; color: black}
+  #currentsong #wrapper #playerWrapper {height: 40%; width: 100%; box-sizing: border-box; padding: 40px 10px 0 10px; margin: 0}
+  #currentsong #wrapper #player {width: 100%; height: 100%; background-color: #222; border-radius: 10px; display: flex; color: white; font-family: 'Barlow'; transition: border-radius 1s;}
+  #currentsong #player #timer {flex-grow: 1; -webkit-appearance: none; appearance: none; background: #222; --progress: 0px; cursor: pointer}
+  #currentsong #player #timer::-webkit-slider-runnable-track {background: #333; box-shadow: var(--progress) 0px #2DC964 inset, var(--load) 0px #324238 inset; border-radius: 5px; cursor: pointer}
+  #currentsong #player #timer::-moz-range-track {background: #333; box-shadow: var(--progress) 0px #2DC964 inset, var(--load) 0px #324238 inset; border-radius: 5px; cursor: pointer}
+  #currentsong #player #timer::-webkit-slider-thumb {-webkit-appearance: none; appearance: none; background: #2DC964; width: 20px; height: 40px; cursor: pointer; border-radius: 5px}
+  #currentsong #player #timer::-moz-range-thumb {background: #2DC964; width: 20px; height: 40px; cursor: pointer; border-radius: 5px}
+  #currentsong #player #playBtn {width: 60px; overflow: hidden; font-size: 40px}
+  #currentsong #player #playBtn i {font-size: 60px; color: white; cursor: pointer}
+  #currentsong #player #playBtn:active .material-icon, #currentsong #player #playBtn:focus .material-icon, #currentsong #player #playBtn:hover .material-icon {color: #2DC964}
+  #currentsong #player div {font-size: 25px; display: flex; align-items: center; justify-content: flex-start;}
+  #currentsong #player div:not(#timer) {margin-right: 10px; margin-left: 10px}
+  #currentsong #playerWrapper #volumeWarning {background-color: rgba(78, 27, 27, 0.8); border: rgba(255, 0, 0, 0.5) solid 3px; border-top: none; color: white; font-family: 'Barlow'; box-sizing: border-box; padding: 5px; font-size: 30px; position: relative; transition: opacity 1s ease-in-out, border-radius 1s;}
+  #currentsong #playerWrapper #volumeWarning.enabled {opacity: 1; z-index: 99; border-radius: 0px 0px 10px 10px;}
+  #currentsong #playerWrapper #volumeWarning:not(.enabled) {opacity: 0; z-index: -99; transition: opacity 1s ease-in-out, z-index 0.1s 1s, border-radius 1s; border-radius: 10px;}
+  #currentsong audio {width: 100%; height: 30%;}
+  #currentsong .arrow:active, #currentsong .arrow:focus {background-color: #1DB954; color: black}
+  #controls {width: 100%; height: 50%; display: flex; flex-direction: column; align-items: center}
+  #controls>div:first-of-type {display: flex; flex-grow: 1; width: 100%}
+  #controls>div:last-of-type {display: flex; width: 100%; justify-content: space-around}
+  #controls>div>div {color: white; font-weight: 900; display: flex; align-items: center; justify-content: center;}
+  .switchwrapper {height: 80px; background-color: #222; border-radius: 10px; flex-grow: 1; margin-left: 10px; margin-right: 10px;}
+  .switchwrapper p {margin: 0; margin-left: 10px; font-weight: 400; font-size: 30px}
+  .switch {width: 35px; height: 20px; background-color: #fc0a02; border-radius: 10px; position: relative; margin-left: 10px; margin-right: 10px; cursor: pointer; transition: 0.1s ease-in-out}
+  .switch span {background-color: white; width: 20px; height: 20px; border-radius: 10px; position: absolute; left: 0px; transition: 0.1s ease-in-out}
+
+  
+  #songlist {margin-top: 800px; display: flex; flex-direction: column; align-items: center; padding: 30px; box-sizing: border-box; font-family: "Barlow"; width: 100%; overflow-y: scroll; height: calc(100% - 800px)}
+  #songlist div {display: flex; background-color: #181818; width: 100%; padding: 10px; box-sizing: border-box; border-radius: 20px; color: white; align-items: stretch; cursor: pointer; transition: 0.1s ease-in-out; font-size: 30px; border-right: #555 solid 4px; border-left: #555 solid 4px}
+  #songlist div:not(:last-of-type) {margin-bottom: 40px}
+  #songlist div:last-of-type {margin-bottom: 20px}
+  #songlist div p:first-of-type {background-color: #222; border-radius: 30px; align-items: center; padding-left: 30px; padding-right: 30px; display: flex; margin: 0; padding-bottom: 20px; padding-top: 20px;}
+  #songlist div p:last-of-type {background-color: #222; min-width: 10%; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0;}
+  #songlist p:nth-of-type(2) {flex-grow: 1;}
+  #songlist .selected {color: #2DC964; border-color: #1DB954;}
+}

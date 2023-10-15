@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="db/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow">
+    <link rel="icon" href="ui/img/png">
+  </head>
+  <body>
+    <main>
+      <div id="inputs-wrapper">
+        <div id="inputs">
+          <p>Search by ID:</p>
+          <input type="search" id="search"> 
+          <div id="button">&gt;&gt;</div>
+        </div>
+        <div id="submitted-input">
+          <p id="submit-text">Results for:</p>
+        </div>
+      </div>
+      <div id="results">
+        <div id="result-list">
+          <div class="result">
+            <p>Spotify Id:</p>
+            <p>Song Name:</p>
+            <p>Youtube Id:</p>
+            <p>Volume:</p>
+          </div>
+        </div>
+      </div>
+      <div id="editor">
+        <div id="edits">
+          <div class="category" id="spotifyid">Spotify Id: <p></p></div>
+          <div class="category" id="songname">Song Name: <p></p></div>
+          <div class="category" id="youtubeid">Youtube Id: <input></div>
+          <div class="category" id="volume">Volume: <input></div>
+        </div>
+        <div id="creds">
+          <div><p>user:&nbsp;&nbsp;&nbsp;</p><input type="text" id="usercred"></div>
+          <div><p>pass:&nbsp;&nbsp;&nbsp;</p><input type="text" id="userpass"></div>
+        </div>
+        <div id="gobutton">
+          GO
+        </div>
+      </div>
+    </main>
+    <script src="db/script.js"></script>
+  </body>
+</html>

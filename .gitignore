@@ -1,0 +1,7 @@
+.breakpoints
+.replit
+logs/
+node_modules/
+replit.nix
+songs/
+ssh/

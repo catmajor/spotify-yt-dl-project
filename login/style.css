@@ -1,0 +1,27 @@
+body {border: 0; padding: 0; margin: 0; display: flex; flex-direction: column;}
+@media only screen and (min-width: 1224px) {
+  body {--device-type: desktop}
+}
+
+@media only screen and (max-width : 1224px) {
+  body {--device-type: mobile}
+  .splash {text-shadow: 12px 12px 15px black;}
+  body .splash h1 {font-size: 100px; margin: 0 120px 0 0;}
+  body .splash h2 {font-size: 80px; margin: 0 0 0 120px;}
+  body .splash a {font-size: 40px; margin-top: 80px; padding: 30px 90px 30px 90px; border-bottom: #555 solid 4px; border-top: #555 solid 4px; border-radius: 30px}
+}
+.background {width: 100%; height: 100%; position: fixed; z-index: -99}
+.background a {color: black}
+.background-stripe{background-color: black;}
+
+.background-stripe-wrapper {--xpos: 0px; position: fixed; left: var(--xpos); width: 120px; height: 100%}
+.background-stripe {--low-percent: 0%; --middle-percent-low: 15%; --middle-percent-high: 25%; --high-percent: 40%; height: calc((200% + 100px) / 1.73205080757); width: 100px; transform: rotate(-30deg); transform-origin: top left; background: linear-gradient(#183f26 0%, #111 var(--low-percent), #111 var(--high-percent), #287e46 100%)}
+
+
+main {width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center}
+.splash {color: white; text-shadow: 4px 4px 5px black; display: flex; align-items: center; justify-content: center; flex-direction: column; user-select: none; font-family: 'Titillium Web'}
+.splash h1 {margin: 0 120px 0 0; color: white; font-size: 80px}
+.splash h2 {margin: 0 0 0 200px; color: #2DC964; font-size: 60px}
+.splash a {z-index: 99; border-bottom: #555 solid 1px; border-top: #555 solid 1px; text-shadow: none; display: flex; align-items: center; justify-content: center; padding: 10px 60px 10px 60px; border-radius: 10px; background-color: rgba(24,24,24, 0.8); color: white; text-decoration: none; margin-top: 30px; font-size: 40px; cursor: pointer; box-shadow: 4px 4px 5px black; transition: 0.1s ease-in-out}
+.splash a:hover {color: #2DC964; background-color: #282828}
+.splash a:focus, .splash a:active {background-color: #111}

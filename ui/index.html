@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="ui/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow">
+    <link rel="icon" href="ui/img/png">
+    <title>Music Player</title>
+  </head>
+  <body>
+    <div id="staticbackground" style="position: fixed; height: 100%; width: 100%;"></div>
+    <main>
+      <input type="checkbox" id="show-playlists-mobile">
+      <nav id="accountinfo">
+        <div class="flip">
+          <div class="flip">
+            <ul class="sidebarele1">
+            </ul>
+            <div class="sidebarele2-mobile">
+              <label class="mobile" for="show-playlists-mobile">Show Playlists</label>
+              <ul class="sidebarele2">
+            </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="songlist">
+        <div style="background-color: rgba(24, 24, 24, 0.6); cursor: default"><p>Click a Playlist</p><p></p><p>&lt;--</p></div>
+      </div>
+      <div id="currentsong">
+        <div>
+          <img src="ui/img/jpg" id="iconImg">
+          <div id="wrapper">
+            <div id="playerWrapper">
+              <div id="player">
+                <div id="playBtn"><i class="material-icons">play_arrow</i></div>
+                <input id="timer" type="range" step="any" min="0" max="100" value="0">
+                <div id="progress">0:00 / 0:00</div>
+                <audio id="audio" src="/songs" preload="auto"></audio>
+              </div>
+              <div id="volumeWarning">
+                &#9432; Downloading/normalizing song for first time -- cannot skip time and volume may be off
+              </div>
+            </div>
+            <div id="controls">
+              <div>
+                <div class="arrow" id="previous">&#x21E6;</div>
+                <div id="songname">Click a Song</div>
+                <div class="arrow" id="next">&#x21E8;</div>
+              </div>
+              <div id="switches">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="ui/script.js"></script>
+  </body>
+</html>
