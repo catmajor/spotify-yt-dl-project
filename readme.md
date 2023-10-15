@@ -1,7 +1,7 @@
 # spotify-yt-project
 
 # I know there is only one commit, but, I promise I'm the one who made the project.
- I wrote this on replit and never initialized a git repo for the project. My replit account is located at
+ I wrote this on replit and never initialized a git repo for the project until now. My replit account is located at
 # https://replit.com/@catmajor
 
 ## Hello!
